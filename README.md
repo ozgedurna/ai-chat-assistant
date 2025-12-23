@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🤖 AI Chat Assistant
 
 Webinar'da öğrendiklerinle yapılmış, FastAPI + Streamlit + Docker + Gemini AI kullanarak tam özellikli bir AI sohbet uygulaması.
@@ -146,3 +147,7 @@ MIT License - istediğin gibi kullanabilirsin!
 
 **Yapımcı:** Görkem Sayer Webinar'ından ilhamla ❤️
 **Tarih:** 2024
+=======
+# ai-chat-assistant
+Production-ready AI assistant powered by Gemini AI - Docker containerized FastAPI + Streamlit application
+>>>>>>> e1ae5246e21227dbb469aa85404eaae839690f4a
