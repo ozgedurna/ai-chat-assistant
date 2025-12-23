@@ -1,153 +1,148 @@
-<<<<<<< HEAD
-# 🤖 AI Chat Assistant
+# AI Chat Assistant
 
-Webinar'da öğrendiklerinle yapılmış, FastAPI + Streamlit + Docker + Gemini AI kullanarak tam özellikli bir AI sohbet uygulaması.
+Production-ready AI assistant powered by Google Gemini AI. Full-stack application using FastAPI backend, Streamlit frontend, and Docker containerization.
 
-## 📋 Gereksinimler
+## Requirements
 
-- ✅ Docker Desktop (yüklü ve çalışıyor olmalı)
-- ✅ VS Code
-- ✅ Git
-- ✅ Gemini API Key (Google AI Studio'dan aldığın)
+- Docker Desktop (running)
+- VS Code
+- Git
+- Gemini API Key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
-## 🚀 Kurulum Adımları
+## Quick Start
 
-### 1️⃣ Projeyi VS Code'da Aç
+### 1. Clone the Repository
 
 ```bash
-# Terminal'i aç ve şu komutları çalıştır:
-cd Desktop  # veya istediğin bir klasör
-git clone <bu-repo-url>
+git clone https://github.com/ozgedurna/ai-chat-assistant.git
 cd ai-chat-assistant
-code .  # VS Code'u açar
+code .
 ```
 
-### 2️⃣ API Key'ini Ayarla
+### 2. Configure API Key
 
-Proje klasöründe `.env` dosyası oluştur ve içine şunu yaz:
+Create a `.env` file in the project root:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add your Gemini API key:
 
 ```
-GEMINI_API_KEY=your_api_key_here
+GEMINI_API_KEY=your_actual_api_key_here
 ```
 
-**ÖNEMLİ:** `your_api_key_here` yazan yere Google AI Studio'dan aldığın API key'i yapıştır!
-
-### 3️⃣ Docker ile Çalıştır
-
-VS Code'da yeni bir terminal aç (Terminal > New Terminal) ve şu komutu çalıştır:
+### 3. Run with Docker
 
 ```bash
 docker-compose up --build
 ```
 
-Bu komut:
-- ✅ Backend API'yi başlatır (FastAPI) → http://localhost:8000
-- ✅ Frontend'i başlatır (Streamlit) → http://localhost:8501
-
-### 4️⃣ Uygulamayı Kullan
-
-Tarayıcında şu adresleri aç:
-
+The application will start:
 - **Frontend (Streamlit):** http://localhost:8501
-- **Backend API Docs:** http://localhost:8000/docs
-- **Health Check:** http://localhost:8000/health
+- **Backend API:** http://localhost:8000
+- **API Documentation:** http://localhost:8000/docs
 
-## 🛠️ VS Code'da Geliştirme
-
-### Kodları Düzenle
-
-1. **Backend'i düzenlemek için:** `backend/app.py` dosyasını aç
-2. **Frontend'i düzenlemek için:** `frontend/streamlit_app.py` dosyasını aç
-3. Değişiklikleri kaydet
-4. Docker otomatik olarak yeniden yükler (hot reload)
-
-### Docker'ı Durdur
-
-Terminal'de `Ctrl + C` tuşlarına bas veya:
+### 4. Stop the Application
 
 ```bash
+# Press Ctrl + C in terminal, or:
 docker-compose down
 ```
 
-### Logları Görüntüle
+## Project Structure
+
+```
+ai-chat-assistant/
+├── backend/
+│   ├── app.py              # FastAPI application
+│   ├── requirements.txt    # Python dependencies
+│   └── Dockerfile
+├── frontend/
+│   ├── streamlit_app.py    # Streamlit UI
+│   ├── requirements.txt
+│   └── Dockerfile
+├── docker-compose.yml
+├── .env.example            # API key template
+├── .gitignore
+└── README.md
+```
+
+## Features
+
+- Google Gemini AI integration
+- Modern responsive UI with Streamlit
+- RESTful API with FastAPI
+- Docker containerization for easy deployment
+- Chat history support
+- Adjustable AI parameters (temperature, max tokens)
+- Interactive API documentation (Swagger/OpenAPI)
+- Hot reload for development
+
+## Development
+
+### Edit Backend
+
+Open `backend/app.py` in VS Code. Changes auto-reload with Docker.
+
+### Edit Frontend
+
+Open `frontend/streamlit_app.py` in VS Code. Changes auto-reload with Streamlit.
+
+### View Logs
 
 ```bash
 docker-compose logs -f
 ```
 
-## 📁 Proje Yapısı
+## Troubleshooting
 
-```
-ai-chat-assistant/
-├── backend/
-│   ├── app.py              # FastAPI uygulaması
-│   ├── requirements.txt    # Python bağımlılıkları
-│   └── Dockerfile         # Backend Docker yapılandırması
-├── frontend/
-│   ├── streamlit_app.py   # Streamlit UI
-│   ├── requirements.txt   # Python bağımlılıkları
-│   └── Dockerfile        # Frontend Docker yapılandırması
-├── docker-compose.yml     # Docker orchestration
-├── .env                   # API anahtarların (GIT'E EKLEME!)
-├── .gitignore            # Git ignore kuralları
-└── README.md             # Bu dosya
-```
+### Docker Issues
 
-## 🎯 Özellikler
-
-- ✅ Google Gemini AI entegrasyonu
-- ✅ Modern ve responsive UI (Streamlit)
-- ✅ RESTful API (FastAPI)
-- ✅ Docker ile kolay deployment
-- ✅ Sohbet geçmişi
-- ✅ Ayarlanabilir AI parametreleri (temperature, max tokens)
-- ✅ API dokümantasyonu (Swagger/OpenAPI)
-
-## 🐛 Sorun Giderme
-
-### Docker çalışmıyor
 ```bash
-# Docker Desktop'ın çalıştığından emin ol
-# Ardından:
 docker-compose down
 docker-compose up --build
 ```
 
-### Port zaten kullanımda
-```bash
-# Portları değiştir: docker-compose.yml dosyasında
-# 8000 → 8001 ve 8501 → 8502
-```
+### Port Already in Use
 
-### API Key hatası
-- `.env` dosyasının doğru yerde olduğundan emin ol
-- API key'inin doğru olduğunu kontrol et
-- Docker'ı yeniden başlat: `docker-compose restart`
+Edit `docker-compose.yml` to change ports:
+- Change `8000:8000` to `8001:8000`
+- Change `8501:8501` to `8502:8501`
 
-## 📚 Kaynaklar
+### API Key Errors
 
-- [FastAPI Dokümantasyonu](https://fastapi.tiangolo.com/)
-- [Streamlit Dokümantasyonu](https://docs.streamlit.io/)
-- [Gemini API Dokümantasyonu](https://ai.google.dev/docs)
-- [Docker Dokümantasyonu](https://docs.docker.com/)
+- Verify `.env` file exists in project root
+- Check API key is valid
+- Restart Docker: `docker-compose restart`
 
-## 🤝 Katkıda Bulun
+## Technology Stack
 
-1. Fork'la
-2. Feature branch oluştur (`git checkout -b feature/amazing-feature`)
-3. Commit'le (`git commit -m 'feat: Add amazing feature'`)
-4. Push'la (`git push origin feature/amazing-feature`)
-5. Pull Request aç
+- **Backend:** FastAPI, Python 3.11, Uvicorn
+- **Frontend:** Streamlit
+- **AI:** Google Gemini API
+- **Deployment:** Docker, Docker Compose
 
-## 📝 Lisans
+## Resources
 
-MIT License - istediğin gibi kullanabilirsin!
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Gemini API Documentation](https://ai.google.dev/docs)
+- [Docker Documentation](https://docs.docker.com/)
 
----
+## Contributing
 
-**Yapımcı:** Görkem Sayer Webinar'ından ilhamla ❤️
-**Tarih:** 2024
-=======
-# ai-chat-assistant
-Production-ready AI assistant powered by Gemini AI - Docker containerized FastAPI + Streamlit application
->>>>>>> e1ae5246e21227dbb469aa85404eaae839690f4a
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -m 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Open a Pull Request
+
+## License
+
+MIT License - feel free to use this project for learning and development.
+
+## Author
+
+Built with FastAPI, Streamlit, and Docker.
